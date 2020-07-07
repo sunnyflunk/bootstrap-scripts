@@ -14,3 +14,11 @@ use a bootstrap image to complete a full bootstrap for a self hosting image.
 We plan to make these scripts flexible enough to handle a variety of hardware configurations,
 although for initial simplicty (and lack of appropriate hardware) we'll just focus on
 x86_64 hardware.
+
+### Requirements
+
+ - Host zlib
+ - Working host toolchain (gcc or clang)
+ - `curl`  binary in path
+ - non-stupid `tar`
+ - `bash` - Yes, these are bash scripts.
