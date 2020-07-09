@@ -45,6 +45,27 @@ function getInstallDir()
     echo "${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"
 }
 
+# Verify the download is correct
+function verifyDownload()
+{
+    [ ! -z "${1}" ] || serpentFail "Incorrect use of downloadSource"
+    sourceFile="${SERPENT_SOURCES_DIR}/${1}"
+    [ -f "${sourceFile}" ] || serpentFail "Missing source file: ${sourceFile}"
+    sourceURL="$(cat ${sourceFile} | cut -d ' ' -f 1)"
+    sourceHash="$(cat ${sourceFile} | cut -d ' ' -f 2)"
+    [ ! -z "${sourceURL}" ] || serpentFail "Missing URL for source: $1"
+    [ ! -z "${sourceHash}" ] || serpentFail "Missing hash for source: $1"
+    sourcePathBase=$(basename "${sourceURL}")
+    sourcePath="${SERPENT_DOWNLOAD_DIR}/${sourcePathBase}"
+
+    printInfo "Computing hash for ${sourcePathBase}"
+
+    computeHash=$(sha256sum "${sourcePath}" | cut -d ' ' -f 1)
+    [ $? -eq 0 ] || serpentFail "Failed to compute SHA256sum"
+
+    [ "${computeHash}" == "${sourceHash}" ] || serpentFail "Corrupt download: ${sourcePath}"
+}
+
 # Download a file from sources/
 function downloadSource()
 {
@@ -67,6 +88,7 @@ function downloadSource()
 
     printInfo "Downloading ${sourcePathBase}"
     curl -L --output "${sourcePath}" "${sourceURL}"
+    verifyDownload "${1}"
 }
 
 # Tightly control the path
