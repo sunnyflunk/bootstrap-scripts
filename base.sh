@@ -3,7 +3,7 @@
 # Common functionality between all stages
 
 
-# Emit a watning to tty
+# Emit a warning to tty
 function printWarning()
 {
     echo -en '\e[1m\e[93m[WARNING]\e[0m '
