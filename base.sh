@@ -26,3 +26,7 @@ function printInfo()
 
 # Tightly control the path
 export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
+
+export SERPENT_ROOT_DIR="$(dirname $(realpath -s $0))"
+export SERPENT_BUILD_DIR="${SERPENT_ROOT_DIR}/build"
+export SERPENT_DOWNLOAD_DIR="${SERPENT_ROOT_DIR}/downloads"
