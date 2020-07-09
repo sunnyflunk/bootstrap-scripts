@@ -111,7 +111,13 @@ function extractSource()
 function prepareBuild()
 {
     export SERPENT_BUILD_DIR="${SERPENT_BUILD_DIR}/${SERPENT_BUILD_NAME}"
-    printInfo "Build Directory: ${SERPENT_BUILD_DIR}"
+    printInfo "Building ${SERPENT_BUILD_NAME} in ${SERPENT_BUILD_DIR}"
+
+    if [[ -d "${SERPENT_BUILD_DIR}" ]]; then
+        printWarning "Removing stale build directory"
+        rm -rf "${SERPENT_BUILD_DIR}" || serpentFail "Failed to remove stale build directory"
+    fi
+
     mkdir -p "${SERPENT_BUILD_DIR}" || serpentFail "Cannot create working tree"
     cd "${SERPENT_BUILD_DIR}"
 }
