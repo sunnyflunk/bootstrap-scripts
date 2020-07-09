@@ -2,6 +2,7 @@
 
 # Common functionality between all stages
 
+
 # Emit a watning to tty
 function printWarning()
 {
@@ -37,9 +38,24 @@ function requireTools()
     done
 }
 
+# Helper to get older stage tree
+function getInstallDir()
+{
+    [ ! -z "${1}" ] || serpentFail "Incorrect use of getInstallDir"
+    echo "${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"
+}
+
 # Tightly control the path
 export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
 
+# Make sure he scripts are properly implemented.
+[ ! -z "${SERPENT_STAGE_NAME}" ] || serpentFail "Stage name is not set"
+
 export SERPENT_ROOT_DIR="$(dirname $(realpath -s $0))"
-export SERPENT_BUILD_DIR="${SERPENT_ROOT_DIR}/build"
+export SERPENT_BUILD_ROOT="${SERPENT_ROOT_DIR}/build"
 export SERPENT_DOWNLOAD_DIR="${SERPENT_ROOT_DIR}/downloads"
+export SERPENT_INSTALL_ROOT="${SERPENT_ROOT_DIR}/install"
+
+# Stage specific directories
+export SERPENT_BUILD_DIR="${SERPENT_BUILD_ROOT}/${SERPENT_STAGE_NAME}"
+export SERPENT_INSTALL_DIR="${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"

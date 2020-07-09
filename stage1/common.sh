@@ -1,5 +1,7 @@
 #!/bin/true
 
+export SERPENT_STAGE_NAME="stage1"
+
 . $(dirname $(realpath -s $0))/../base.sh
 
 # Set up stage1 specific requirements
