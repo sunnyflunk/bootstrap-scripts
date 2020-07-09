@@ -22,3 +22,7 @@ function printInfo()
     echo -en '\e[1m\e[94m[INFO]\e[0m '
     echo $*
 }
+
+
+# Tightly control the path
+export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
