@@ -87,3 +87,6 @@ export SERPENT_INSTALL_DIR="${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"
 
 # Basic validation.
 [ -d "${SERPENT_SOURCES_DIR}" ] || serpentFail "Missing source tree"
+
+# Check basic requirements before we go anywhere.
+requireTools curl tar
