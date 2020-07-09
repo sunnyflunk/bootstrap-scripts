@@ -122,6 +122,17 @@ function prepareBuild()
     cd "${SERPENT_BUILD_DIR}"
 }
 
+# Fetch all sources for all builds
+function prefetchSources()
+{
+    printInfo "Prefetching all sources"
+
+    for sourceFile in "${SERPENT_SOURCES_DIR}"/* ; do
+        bnom=$(basename "${sourceFile}")
+        downloadSource "${bnom}"
+    done
+}
+
 # Tightly control the path
 export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
 
