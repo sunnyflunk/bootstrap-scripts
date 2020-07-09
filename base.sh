@@ -55,6 +55,7 @@ export SERPENT_ROOT_DIR="$(dirname $(realpath -s $0))"
 export SERPENT_BUILD_ROOT="${SERPENT_ROOT_DIR}/build"
 export SERPENT_DOWNLOAD_DIR="${SERPENT_ROOT_DIR}/downloads"
 export SERPENT_INSTALL_ROOT="${SERPENT_ROOT_DIR}/install"
+export SERPENT_SOURCES_DIR="${SERPENT_ROOT_DIR}/sources"
 
 # Stage specific directories
 export SERPENT_BUILD_DIR="${SERPENT_BUILD_ROOT}/${SERPENT_STAGE_NAME}"
