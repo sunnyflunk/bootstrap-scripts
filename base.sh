@@ -45,6 +45,30 @@ function getInstallDir()
     echo "${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"
 }
 
+# Download a file from sources/
+function downloadSource()
+{
+    [ ! -z "${1}" ] || serpentFail "Incorrect use of downloadSource"
+    sourceFile="${SERPENT_SOURCES_DIR}/${1}"
+    [ -f "${sourceFile}" ] || serpentFail "Missing source file: ${sourceFile}"
+    sourceURL="$(cat ${sourceFile} | cut -d ' ' -f 1)"
+    sourceHash="$(cat ${sourceFile} | cut -d ' ' -f 2)"
+    [ ! -z "${sourceURL}" ] || serpentFail "Missing URL for source: $1"
+    [ ! -z "${sourceHash}" ] || serpentFail "Missing hash for source: $1"
+    sourcePathBase=$(basename "${sourceURL}")
+    sourcePath="${SERPENT_DOWNLOAD_DIR}/${sourcePathBase}"
+
+    mkdir -p "${SERPENT_DOWNLOAD_DIR}" || serpentFail "Failed to create download tree"
+
+    if [[ -f "${sourcePath}" ]]; then
+        printInfo "Skipping download of ${sourcePathBase}"
+        return
+    fi
+
+    printInfo "Downloading ${sourcePathBase}"
+    curl -L --output "${sourcePath}" "${sourceURL}"
+}
+
 # Tightly control the path
 export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
 
