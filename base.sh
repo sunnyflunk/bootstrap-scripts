@@ -48,7 +48,7 @@ function getInstallDir()
 # Verify the download is correct
 function verifyDownload()
 {
-    [ ! -z "${1}" ] || serpentFail "Incorrect use of downloadSource"
+    [ ! -z "${1}" ] || serpentFail "Incorrect use of verifyDownload"
     sourceFile="${SERPENT_SOURCES_DIR}/${1}"
     [ -f "${sourceFile}" ] || serpentFail "Missing source file: ${sourceFile}"
     sourceURL="$(cat ${sourceFile} | cut -d ' ' -f 1)"
@@ -91,6 +91,31 @@ function downloadSource()
     verifyDownload "${1}"
 }
 
+# Extract a tarball into the current working directory
+function extractSource()
+{
+    [ ! -z "${1}" ] || serpentFail "Incorrect use of extractSource"
+    sourceFile="${SERPENT_SOURCES_DIR}/${1}"
+    [ -f "${sourceFile}" ] || serpentFail "Missing source file: ${sourceFile}"
+    sourceURL="$(cat ${sourceFile} | cut -d ' ' -f 1)"
+    [ ! -z "${sourceURL}" ] || serpentFail "Missing URL for source: $1"
+    sourcePathBase=$(basename "${sourceURL}")
+    sourcePath="${SERPENT_DOWNLOAD_DIR}/${sourcePathBase}"
+
+    printInfo "Extracting ${sourcePathBase}"
+
+    tar xf "${sourcePath}" -C . || serpentFail "Failed to extract ${sourcePath}"
+}
+
+# Prepare the build tree
+function prepareBuild()
+{
+    export SERPENT_BUILD_DIR="${SERPENT_BUILD_DIR}/${SERPENT_BUILD_NAME}"
+    printInfo "Build Directory: ${SERPENT_BUILD_DIR}"
+    mkdir -p "${SERPENT_BUILD_DIR}" || serpentFail "Cannot create working tree"
+    cd "${SERPENT_BUILD_DIR}"
+}
+
 # Tightly control the path
 export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
 
@@ -106,6 +131,9 @@ export SERPENT_SOURCES_DIR="${SERPENT_ROOT_DIR}/sources"
 # Stage specific directories
 export SERPENT_BUILD_DIR="${SERPENT_BUILD_ROOT}/${SERPENT_STAGE_NAME}"
 export SERPENT_INSTALL_DIR="${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"
+
+export SERPENT_BUILD_SCRIPT=$(basename "${0}")
+export SERPENT_BUILD_NAME="${SERPENT_BUILD_SCRIPT%.sh}"
 
 # Basic validation.
 [ -d "${SERPENT_SOURCES_DIR}" ] || serpentFail "Missing source tree"

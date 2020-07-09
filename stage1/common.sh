@@ -16,3 +16,5 @@ else
     printError "No usable compiler was found"
     exit 1
 fi
+
+prepareBuild
