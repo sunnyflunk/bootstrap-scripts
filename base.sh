@@ -23,6 +23,19 @@ function printInfo()
     echo $*
 }
 
+# Failed to do a thing. Exit fatally.
+function serpentFail()
+{
+    printError $*
+    exit 1
+}
+
+function requireTools()
+{
+    for tool in $* ; do
+        which "${tool}" &>/dev/null  || serpentFail "Missing host executable: ${tool}"
+    done
+}
 
 # Tightly control the path
 export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
