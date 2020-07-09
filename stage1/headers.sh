@@ -1,3 +1,3 @@
-#!/usr/bin/env -S -i bash --norc --noprofile
+#!/bin/true
 
 . $(dirname $(realpath -s $0))/common.sh
