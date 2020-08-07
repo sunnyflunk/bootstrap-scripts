@@ -160,7 +160,7 @@ export SERPENT_BUILD_NAME="${SERPENT_BUILD_SCRIPT%.sh}"
 [ -d "${SERPENT_SOURCES_DIR}" ] || serpentFail "Missing source tree"
 
 # Check basic requirements before we go anywhere.
-requireTools curl tar
+requireTools curl tar ninja cmake
 
 ### TODO: Make this configurable
 
