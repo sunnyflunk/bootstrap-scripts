@@ -161,3 +161,8 @@ export SERPENT_BUILD_NAME="${SERPENT_BUILD_SCRIPT%.sh}"
 
 # Check basic requirements before we go anywhere.
 requireTools curl tar
+
+### TODO: Make this configurable
+
+export SERPENT_ARCH="x86_64"
+export SERPENT_TRIPLET="x86_64-serpent-linux-musl"
