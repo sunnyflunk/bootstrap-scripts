@@ -4,6 +4,7 @@ executionPath=$(dirname $(realpath -s $0))
 
 COMPONENTS=(
     "headers"
+    "toolchain"
 )
 
 for component in ${COMPONENTS[@]} ; do
