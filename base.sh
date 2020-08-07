@@ -156,6 +156,9 @@ export SERPENT_INSTALL_DIR="${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"
 export SERPENT_BUILD_SCRIPT=$(basename "${0}")
 export SERPENT_BUILD_NAME="${SERPENT_BUILD_SCRIPT%.sh}"
 
+export SERPENT_BUILD_JOBS=$(nproc)
+
+
 # Basic validation.
 [ -d "${SERPENT_SOURCES_DIR}" ] || serpentFail "Missing source tree"
 
