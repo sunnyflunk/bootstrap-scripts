@@ -137,6 +137,20 @@ function prefetchSources()
     done
 }
 
+# Enable ccache if possible
+function enableCcache()
+{
+    if [[ -e "/usr/lib64/ccache/bin" ]]; then
+        export PATH="/usr/lib64/ccache/bin:$PATH"
+        printInfo "ccache enabled"
+    elif [[ -e "/usr/lib/ccache/bin" ]]; then
+        printInfo "ccache enabled"
+        export PATH="/usr/lib/ccache/bin:$PATH"
+    else
+        printWarning "Failed to enable ccache"
+    fi
+}
+
 # Tightly control the path
 export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
 
