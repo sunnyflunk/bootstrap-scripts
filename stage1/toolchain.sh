@@ -31,6 +31,7 @@ pushd llvm
 
 mkdir build && pushd build
 cmake -G Ninja ../ \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm;openmp;polly' \
     -DDEFAULT_SYSROOT="${SERPENT_INSTALL_DIR}" \
     -DCMAKE_BUILD_TYPE=Release \
