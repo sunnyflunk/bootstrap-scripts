@@ -61,4 +61,7 @@ cmake -G Ninja ../ \
     -DLIBCXXABI_INSTALL_LIBRARY=OFF \
     -DLIBUNWIND_USE_COMPILER_RT=ON
 
-ninja -j ${SERPENT_BUILD_JOBS} -v
+ninja -j "${SERPENT_BUILD_JOBS}" -v
+
+printInfo "Installing toolchain"
+DESTDIR="${SERPENT_INSTALL_DIR}" ninja install -j "${SERPENT_BUILD_JOBS}" -v
