@@ -8,6 +8,8 @@ COMPONENTS=(
     "musl"
 )
 
+prefetchSources
+
 for component in ${COMPONENTS[@]} ; do
     /usr/bin/env -S -i bash --norc --noprofile "${executionPath}/${component}.sh"
 done
