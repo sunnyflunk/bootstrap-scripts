@@ -42,7 +42,7 @@ function requireTools()
 function getInstallDir()
 {
     [ ! -z "${1}" ] || serpentFail "Incorrect use of getInstallDir"
-    echo "${SERPENT_INSTALL_ROOT}/${SERPENT_STAGE_NAME}"
+    echo "${SERPENT_INSTALL_ROOT}/stage${1}"
 }
 
 # Verify the download is correct
