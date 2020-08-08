@@ -22,3 +22,17 @@ x86_64 hardware.
  - `curl`  binary in path
  - non-stupid `tar`
  - `bash` - Yes, these are bash scripts.
+
+
+#### stage1
+
+Build a minimal cross-compiler for the target, with supporting C/C++ runtime libraries.
+
+#### stage2
+
+Use stage1 to cross-compile essentials for a working chroot, and freshly cross-compiled 'native' clang
+
+#### stage3
+
+Use stage2's resulting chroot environment to build 100% clean, native toolchain, libraries and such.
+This base image will be used as the starting point to build serpent OS in Stage 4.
