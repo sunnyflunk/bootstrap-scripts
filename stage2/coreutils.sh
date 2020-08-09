@@ -16,7 +16,8 @@ export FORCE_UNSAFE_CONFIGURE=1
     --enable-largefile \
     --libdir=/usr/lib \
     --bindir=/usr/bin \
-    --sbindir=/usr/sbin
+    --sbindir=/usr/sbin \
+    --enable-single-binary
 
 
 printInfo "Building coreutils"
