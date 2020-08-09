@@ -10,6 +10,7 @@ COMPONENTS=(
     "root"
     "headers"
     "musl"
+    "ncurses"
 )
 
 prefetchSources
