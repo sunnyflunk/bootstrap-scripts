@@ -8,6 +8,7 @@ executionPath=$(dirname $(realpath -s $0))
 
 COMPONENTS=(
     "root"
+    "headers"
 )
 
 prefetchSources
