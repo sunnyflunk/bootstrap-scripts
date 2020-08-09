@@ -13,6 +13,7 @@ COMPONENTS=(
     "ncurses"
     "bash"
     "util-linux"
+    "coreutils"
 )
 
 prefetchSources
