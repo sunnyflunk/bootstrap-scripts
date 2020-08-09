@@ -184,3 +184,7 @@ requireTools curl tar ninja cmake
 export SERPENT_ARCH="x86_64"
 export SERPENT_TRIPLET="x86_64-serpent-linux-musl"
 export SERPENT_HOST="x86_64-linux-gnu"
+
+
+export LANG="C"
+export LC_ALL="C"
