@@ -34,5 +34,8 @@ unset SERPENT_LLVM_TARGET
 
 export CC="clang"
 export CXX="clang++"
+export AR="llvm-ar"
+export RANLIB="llvm-ranlib"
+export STRIP="llvm-strip"
 
 prepareBuild
