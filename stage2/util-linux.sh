@@ -31,7 +31,9 @@ printInfo "Configuring util-linux"
     --libdir=/usr/lib \
     --disable-rpath \
     --disable-makeinstall-chown \
-    --disable-makeinstall-setuid
+    --disable-makeinstall-setuid \
+    --bindir=/usr/bin \
+    --sbindir=/usr/sbin
 
 
 printInfo "Building util-linux"
