@@ -19,3 +19,6 @@ make -j "${SERPENT_BUILD_JOBS}"
 
 printInfo "Installing musl"
 make -j "${SERPENT_BUILD_JOBS}" install DESTDIR="${SERPENT_INSTALL_DIR}"
+
+printInfo "Installing ldd"
+ln -sv ../lib/libc.so "${SERPENT_INSTALL_DIR}/usr/bin/ldd"
