@@ -90,8 +90,17 @@ function downloadSource()
         return
     fi
 
+    if [[ -f "${sourcePath}.partial" ]]; then
+        printInfo "Resuming download of ${sourcePathBase}"
+        curl -C - -L --fail --ftp-pasv --retry 3 --retry-delay 5 -o "${sourcePath}.partial" "${sourceURL}"
+        mv "${sourcePath}.partial" "${sourcePath}" || serpentFail "Failed to move completed resumed file"
+        verifyDownload "${1}"
+        return
+    fi
+
     printInfo "Downloading ${sourcePathBase}"
-    curl -L --output "${sourcePath}" "${sourceURL}"
+    curl -C - -L --fail --ftp-pasv --retry 3 --retry-delay 5 -o "${sourcePath}.partial" "${sourceURL}"
+    mv "${sourcePath}.partial" "${sourcePath}" || serpentFail "Failed to move completed downloaded file"
     verifyDownload "${1}"
 }
 
@@ -179,12 +188,9 @@ export SERPENT_BUILD_JOBS=$(nproc)
 # Check basic requirements before we go anywhere.
 requireTools curl tar ninja cmake
 
-### TODO: Make this configurable
-
-export SERPENT_ARCH="x86_64"
-export SERPENT_TRIPLET="x86_64-serpent-linux-musl"
-export SERPENT_HOST="x86_64-linux-gnu"
-
+export SERPENT_ARCH=${SERPENT_ARCH:-"x86_64"}
+export SERPENT_TRIPLET=${SERPENT_TRIPLET:-"x86_64-serpent-linux-musl"}
+export SERPENT_HOST=${SERPENT_HOST}:-"x86_64-linux-gnu"}
 
 export LANG="C"
 export LC_ALL="C"
