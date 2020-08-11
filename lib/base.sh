@@ -166,7 +166,8 @@ export PATH="/usr/bin:/bin/:/sbin:/usr/sbin"
 # Make sure the scripts are properly implemented.
 [ ! -z "${SERPENT_STAGE_NAME}" ] || serpentFail "Stage name is not set"
 
-export SERPENT_ROOT_DIR="$(dirname $(realpath -s ${BASH_SOURCE[0]}))"
+export SERPENT_ROOT_DIR="$(dirname $(dirname $(realpath -s ${BASH_SOURCE[0]})))"
+
 export SERPENT_BUILD_ROOT="${SERPENT_ROOT_DIR}/build"
 export SERPENT_DOWNLOAD_DIR="${SERPENT_ROOT_DIR}/downloads"
 export SERPENT_INSTALL_ROOT="${SERPENT_ROOT_DIR}/install"
