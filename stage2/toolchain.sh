@@ -13,8 +13,6 @@ extractSource libcxxabi
 extractSource libunwind
 extractSource lld
 extractSource llvm
-extractSource openmp
-extractSource polly
 
 
 ln -sv "clang-${TOOLCHAIN_VERSION}.src" clang
@@ -24,8 +22,6 @@ ln -sv "libcxxabi-${TOOLCHAIN_VERSION}.src" libcxxabi
 ln -sv "libunwind-${TOOLCHAIN_VERSION}.src" libunwind
 ln -sv "lld-${TOOLCHAIN_VERSION}.src" lld
 ln -sv "llvm-${TOOLCHAIN_VERSION}.src" llvm
-ln -sv "openmp-${TOOLCHAIN_VERSION}.src" openmp
-ln -sv "polly-${TOOLCHAIN_VERSION}.src" polly
 
 pushd llvm
 
@@ -45,7 +41,7 @@ export SERPENT_STAGE1_TREE=`getInstallDir "1"`
 cmake -G Ninja ../ \
     -DLLVM_TABLEGEN="${SERPENT_STAGE1_TREE}/usr/bin/llvm-tblgen" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm;openmp;polly' \
+    -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm' \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_TARGET_ARCH="${SERPENT_ARCH}" \
     -DLLVM_DEFAULT_TARGET_TRIPLE="${SERPENT_TRIPLET}" \
