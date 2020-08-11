@@ -10,6 +10,7 @@ COMPONENTS=(
     "headers"
     "toolchain"
     "musl"
+    "libffi"
     "pkgconf"
 )
 
