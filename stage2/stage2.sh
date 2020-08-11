@@ -14,6 +14,7 @@ COMPONENTS=(
     "ncurses"
     "bash"
     "gzip"
+    "xz"
     "util-linux"
     "coreutils"
 )
