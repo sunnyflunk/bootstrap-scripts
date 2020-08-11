@@ -19,6 +19,7 @@ COMPONENTS=(
     "xz"
     "util-linux"
     "coreutils"
+    "openssl"
     "libarchive"
 )
 
