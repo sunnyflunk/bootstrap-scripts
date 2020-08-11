@@ -8,6 +8,7 @@ cd ncurses-*
 
 
 printInfo "Configuring ncurses"
+
 ./configure --prefix=/usr \
     --target="${SERPENT_TRIPLET}" \
     --host="${SERPENT_HOST}" \
@@ -22,6 +23,7 @@ printInfo "Configuring ncurses"
     --disable-db-install \
     --enable-symlinks \
     --with-pkg-config-libdir=/usr/lib/pkgconfig \
+    --without-cxx-binding \
     PKG_CONFIG_LIBDIR=/usr/lib/pkgconfig
 
 
@@ -34,3 +36,6 @@ make -j "${SERPENT_BUILD_JOBS}" install TIC_PATH=$(pwd)/progs/tic  DESTDIR="${SE
 for item in "clear" "captoinfo" "infocmp" "infotocap" "reset" "tabs" "tic" "toe" "tput" "tset" ; do
     ln -sv "${SERPENT_TRIPLET}-${item}" "${SERPENT_INSTALL_DIR}/usr/bin/${item}"
 done
+
+echo "INPUT(-lncursesw)" > "${SERPENT_INSTALL_DIR}/usr/lib/libncurses.so"
+echo "INPUT(-lncursesw)" > "${SERPENT_INSTALL_DIR}/usr/lib/libcurses.so"
