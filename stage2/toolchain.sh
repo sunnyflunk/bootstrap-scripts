@@ -27,16 +27,21 @@ ln -sv "llvm-${TOOLCHAIN_VERSION}.src" llvm
 ln -sv "openmp-${TOOLCHAIN_VERSION}.src" openmp
 ln -sv "polly-${TOOLCHAIN_VERSION}.src" polly
 
-pushd libcxx
-patch -p1 < "${SERPENT_PATCHES_DIR}/libcxx_musl.patch"
-popd
-
 pushd llvm
 
 mkdir build && pushd build
 unset CFLAGS CXXFLAGS
 
+# Our old libc++ is built likely against glibc, so we need to tell it again
+# that any new use of libc++ is via musl.
+export CFLAGS="${CFLAGS} -D_LIBCPP_HAS_MUSL_LIBC"
+export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_HAS_MUSL_LIBC"
+
+
+export SERPENT_STAGE1_TREE=`getInstallDir "1"`
+
 cmake -G Ninja ../ \
+    -DLLVM_TABLEGEN="${SERPENT_STAGE1_TREE}/usr/bin/llvm-tblgen" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm;openmp;polly' \
     -DCMAKE_BUILD_TYPE=Release \
@@ -55,6 +60,8 @@ cmake -G Ninja ../ \
     -DLLVM_ENABLE_LIBCXX=ON \
     -DLLVM_STATIC_LINK_CXX_STDLIB=ON \
     -DSANITIZER_CXX_ABI=libc++ \
+    -DLIBCXX_HAS_MUSL_LIBC=ON \
+    -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
     -DLIBCXX_ENABLE_SHARED=ON \
     -DLIBCXX_ENABLE_STATIC=OFF \
     -DLIBCXX_USE_COMPILER_RT=ON \
