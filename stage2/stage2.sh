@@ -11,6 +11,7 @@ COMPONENTS=(
     "headers"
     "musl"
     "zlib"
+    "libffi"
     "toolchain"
     "attr"
     "acl"
