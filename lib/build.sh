@@ -141,10 +141,18 @@ function enableCcache()
 [ -d "${SERPENT_SOURCES_DIR}" ] || serpentFail "Missing source tree"
 
 # Check basic requirements before we go anywhere.
-requireTools curl tar ninja cmake
+requireTools curl tar ninja cmake uname
 
-export SERPENT_ARCH=${SERPENT_ARCH:-"x86_64"}
-export SERPENT_HOST=${SERPENT_HOST:-"x86_64-linux-gnu"}
+# TODO: Revisit this if needed
+export SERPENT_ARCH=`uname -m`
+
+if [[ -e '/lib/ld-linux-x86-64.so.2' ]] || [[ -e '/lib64/ld-linux-x86-64.so.2' ]]; then
+    export SERPENT_HOST="${SERPENT_ARCH}-linux-gnu"
+else
+    printError "Unsupported host configuration"
+    exit 1
+fi
+    
 export SERPENT_TARGET=${SERPENT_TARGET:-"ia"}
 
 [ -e "${SERPENT_ROOT_DIR}/targets/${SERPENT_TARGET}.sh" ] || serpentFail "Failed to load targets/${SERPENT_TARGET}.sh"
