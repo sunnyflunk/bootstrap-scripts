@@ -13,6 +13,7 @@ COMPONENTS=(
     "zlib"
     "ncurses"
     "bash"
+    "gzip"
     "util-linux"
     "coreutils"
 )
