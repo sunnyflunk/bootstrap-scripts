@@ -11,6 +11,7 @@ COMPONENTS=(
     "headers"
     "musl"
     "zlib"
+    "toolchain"
     "attr"
     "acl"
     "ncurses"
