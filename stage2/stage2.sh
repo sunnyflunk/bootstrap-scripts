@@ -11,6 +11,8 @@ COMPONENTS=(
     "headers"
     "musl"
     "zlib"
+    "attr"
+    "acl"
     "ncurses"
     "bash"
     "gzip"

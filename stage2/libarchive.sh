@@ -22,6 +22,7 @@ printInfo "Configuring libarchive"
     --without-expat \
     --disable-rpath \
     --enable-largefile \
+    --disable-acl
 
 
 printInfo "Building libarchive"
