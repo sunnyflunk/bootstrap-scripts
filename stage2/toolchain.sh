@@ -27,14 +27,16 @@ ln -sv "llvm-${TOOLCHAIN_VERSION}.src" llvm
 ln -sv "openmp-${TOOLCHAIN_VERSION}.src" openmp
 ln -sv "polly-${TOOLCHAIN_VERSION}.src" polly
 
+pushd libcxx
+patch -p1 < "${SERPENT_PATCHES_DIR}/libcxx_musl.patch"
+popd
+
 pushd llvm
 
-enableCcache
-
 mkdir build && pushd build
+unset CFLAGS CXXFLAGS
+
 cmake -G Ninja ../ \
-    -DCMAKE_C_FLAGS="${CFLAGS}" \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm;openmp;polly' \
     -DCMAKE_BUILD_TYPE=Release \
@@ -59,7 +61,7 @@ cmake -G Ninja ../ \
     -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
     -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON \
     -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
-    -DLIBCXXABI_ENABLE_STATIC_UNWINDER=ON
+    -DLIBCXXABI_ENABLE_STATIC_UNWINDER=ON \
     -DLIBCXXABI_USE_COMPILER_RT=ON \
     -DLIBCXXABI_ENABLE_SHARED=OFF \
     -DLIBCXXABI_INSTALL_LIBRARY=OFF \
