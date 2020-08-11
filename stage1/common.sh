@@ -2,7 +2,7 @@
 
 export SERPENT_STAGE_NAME="stage1"
 
-. $(dirname $(realpath -s $0))/../lib/base.sh
+. $(dirname $(realpath -s $0))/../lib/build.sh
 
 # Set up stage1 specific requirements
 
