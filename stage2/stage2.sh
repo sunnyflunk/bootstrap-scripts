@@ -10,6 +10,7 @@ COMPONENTS=(
     "root"
     "headers"
     "musl"
+    "zlib"
     "ncurses"
     "bash"
     "util-linux"
