@@ -23,6 +23,8 @@ ln -sv "libunwind-${TOOLCHAIN_VERSION}.src" libunwind
 ln -sv "lld-${TOOLCHAIN_VERSION}.src" lld
 ln -sv "llvm-${TOOLCHAIN_VERSION}.src" llvm
 
+export SERPENT_CLANG_TABLEGEN=$(realpath ../../stage1/toolchain/llvm-${TOOLCHAIN_VERSION}.src/build/bin/clang-tblgen)
+
 pushd llvm
 
 mkdir build && pushd build
@@ -36,10 +38,14 @@ export CXXFLAGS="${SERPENT_TARGET_CXXFLAGS} -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
 
 export SERPENT_STAGE1_TREE=`getInstallDir "1"`
 
+
+[ -e "${SERPENT_CLANG_TABLEGEN}" ] || serpentFail "Cannot find stage1 tblgen"
+
 # Last two options deliberately remove sanitizer support. We actually do need this
 # in future, so we should follow: https://reviews.llvm.org/D63785
 cmake -G Ninja ../ \
     -DLLVM_TABLEGEN="${SERPENT_STAGE1_TREE}/usr/bin/llvm-tblgen" \
+    -DCLANG_TABLEGEN="${SERPENT_CLANG_TABLEGEN}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm' \
     -DCMAKE_BUILD_TYPE=Release \
