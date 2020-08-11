@@ -189,7 +189,6 @@ export SERPENT_BUILD_JOBS=$(nproc)
 requireTools curl tar ninja cmake
 
 export SERPENT_ARCH=${SERPENT_ARCH:-"x86_64"}
-export SERPENT_TRIPLET=${SERPENT_TRIPLET:-"x86_64-serpent-linux-musl"}
 export SERPENT_HOST=${SERPENT_HOST:-"x86_64-linux-gnu"}
 
 export SERPENT_TARGET=${SERPENT_TARGET:-"ia"}
