@@ -27,6 +27,10 @@ ln -sv "llvm-${TOOLCHAIN_VERSION}.src" llvm
 ln -sv "openmp-${TOOLCHAIN_VERSION}.src" openmp
 ln -sv "polly-${TOOLCHAIN_VERSION}.src" polly
 
+pushd libcxx
+patch -p1 < "${SERPENT_PATCHES_DIR}/libcxx_musl.patch"
+popd
+
 pushd llvm
 
 enableCcache
