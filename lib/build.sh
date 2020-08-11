@@ -157,5 +157,9 @@ export SERPENT_TARGET=${SERPENT_TARGET:-"ia"}
 
 [ -e "${SERPENT_ROOT_DIR}/targets/${SERPENT_TARGET}.sh" ] || serpentFail "Failed to load targets/${SERPENT_TARGET}.sh"
 
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+
 printInfo "Using '${SERPENT_TARGET}' build configuration"
 source "${SERPENT_ROOT_DIR}/targets/${SERPENT_TARGET}.sh"
