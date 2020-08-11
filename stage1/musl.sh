@@ -10,6 +10,9 @@ export PATH="${SERPENT_INSTALL_DIR}/usr/bin:$PATH"
 export CC="clang"
 export CXX="clang++"
 
+export CFLAGS="${SERPENT_TARGET_CFLAGS}"
+export CXXFLAGS="${SERPENT_TARGET_CXXFLAGS}"
+
 printInfo "Configuring musl"
 ./configure --prefix=/usr \
     --target="${SERPENT_TRIPLET}" \

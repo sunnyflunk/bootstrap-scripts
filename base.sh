@@ -192,5 +192,12 @@ export SERPENT_ARCH=${SERPENT_ARCH:-"x86_64"}
 export SERPENT_TRIPLET=${SERPENT_TRIPLET:-"x86_64-serpent-linux-musl"}
 export SERPENT_HOST=${SERPENT_HOST:-"x86_64-linux-gnu"}
 
+export SERPENT_TARGET=${SERPENT_TARGET:-"ia"}
+
+[ -e "${SERPENT_ROOT_DIR}/targets/${SERPENT_TARGET}.sh" ] || serpentFail "Failed to load targets/${SERPENT_TARGET}.sh"
+
+printInfo "Using '${SERPENT_TARGET}' build configuration"
+source "${SERPENT_ROOT_DIR}/targets/${SERPENT_TARGET}.sh"
+
 export LANG="C"
 export LC_ALL="C"

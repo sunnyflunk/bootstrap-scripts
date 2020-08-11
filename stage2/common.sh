@@ -38,4 +38,7 @@ export AR="llvm-ar"
 export RANLIB="llvm-ranlib"
 export STRIP="llvm-strip"
 
+export CFLAGS="${SERPENT_TARGET_CFLAGS}"
+export CXXFLAGS="${SERPENT_TARGET_CXXFLAGS}"
+
 prepareBuild
