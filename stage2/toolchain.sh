@@ -40,6 +40,8 @@ export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_HAS_MUSL_LIBC"
 
 export SERPENT_STAGE1_TREE=`getInstallDir "1"`
 
+# Last two options deliberately remove sanitizer support. We actually do need this
+# in future, so we should follow: https://reviews.llvm.org/D63785
 cmake -G Ninja ../ \
     -DLLVM_TABLEGEN="${SERPENT_STAGE1_TREE}/usr/bin/llvm-tblgen" \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -48,6 +50,7 @@ cmake -G Ninja ../ \
     -DLLVM_TARGET_ARCH="${SERPENT_ARCH}" \
     -DLLVM_DEFAULT_TARGET_TRIPLE="${SERPENT_TRIPLET}" \
     -DLLVM_TARGETS_TO_BUILD="host" \
+    -DLLVM_ENABLE_LIBXML2=OFF \
     -DLLVM_INCLUDE_TESTS=OFF \
     -DCLANG_DEFAULT_CXX_STDLIB=libc++ \
     -DCLANG_DEFAULT_LINKER=lld \
@@ -75,7 +78,9 @@ cmake -G Ninja ../ \
     -DLIBCXXABI_STATICALLY_LINK_UNWINDER_IN_STATIC_LIBRARY=ON \
     -DLIBUNWIND_ENABLE_SHARED=ON \
     -DLIBUNWIND_ENABLE_STATIC=ON \
-    -DLIBUNWIND_USE_COMPILER_RT=ON
+    -DLIBUNWIND_USE_COMPILER_RT=ON \
+    -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
+    -DCOMPILER_RT_BUILD_XRAY=OFF
 
 printInfo "Building toolchain"
 ninja -j "${SERPENT_BUILD_JOBS}" -v
