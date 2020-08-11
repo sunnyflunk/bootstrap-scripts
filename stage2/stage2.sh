@@ -17,6 +17,7 @@ COMPONENTS=(
     "xz"
     "util-linux"
     "coreutils"
+    "libarchive"
 )
 
 prefetchSources
