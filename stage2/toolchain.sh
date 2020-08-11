@@ -34,8 +34,8 @@ unset CFLAGS CXXFLAGS
 
 # Our old libc++ is built likely against glibc, so we need to tell it again
 # that any new use of libc++ is via musl.
-export CFLAGS="${${SERPENT_TARGET_CFLAGS} -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
-export CXXFLAGS="${${SERPENT_TARGET_CXXFLAGS} -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
+export CFLAGS="${SERPENT_TARGET_CFLAGS} -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
+export CXXFLAGS="${SERPENT_TARGET_CXXFLAGS} -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
 
 
 export SERPENT_STAGE1_TREE=`getInstallDir "1"`
