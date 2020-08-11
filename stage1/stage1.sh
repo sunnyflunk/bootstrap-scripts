@@ -2,7 +2,7 @@
 
 export SERPENT_STAGE_NAME="stage1"
 
-. $(dirname $(realpath -s $0))/../base.sh
+. $(dirname $(realpath -s $0))/../lib/base.sh
 
 executionPath=$(dirname $(realpath -s $0))
 
