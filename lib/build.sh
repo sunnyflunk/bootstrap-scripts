@@ -141,7 +141,7 @@ function enableCcache()
 [ -d "${SERPENT_SOURCES_DIR}" ] || serpentFail "Missing source tree"
 
 # Check basic requirements before we go anywhere.
-requireTools curl tar ninja cmake uname
+requireTools curl tar ninja cmake uname patch
 
 # TODO: Revisit this if needed
 export SERPENT_ARCH=`uname -m`

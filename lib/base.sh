@@ -47,6 +47,7 @@ export SERPENT_BUILD_ROOT="${SERPENT_ROOT_DIR}/build"
 export SERPENT_DOWNLOAD_DIR="${SERPENT_ROOT_DIR}/downloads"
 export SERPENT_INSTALL_ROOT="${SERPENT_ROOT_DIR}/install"
 export SERPENT_SOURCES_DIR="${SERPENT_ROOT_DIR}/sources"
+export SERPENT_PATCHES_DIR="${SERPENT_ROOT_DIR}/patches"
 
 # Basic validation.
 [ -d "${SERPENT_SOURCES_DIR}" ] || serpentFail "Missing source tree"
