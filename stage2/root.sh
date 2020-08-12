@@ -6,7 +6,7 @@ set -e
 printInfo "Configuring root filesystem layout"
 
 install -v -D -d -m 00755 "${SERPENT_INSTALL_DIR}"/usr/{bin,lib,share,sbin,include}
-install -v -D -d -m 00755 "${SERPENT_INSTALL_DIR}"/{etc,proc,run,var}
+install -v -D -d -m 00755 "${SERPENT_INSTALL_DIR}"/{etc,proc,run,var,sys,dev,tmp}
 
 install -v -D -d -m 00755 "${SERPENT_INSTALL_DIR}/run/lock"
 ln -sv ../run/lock "${SERPENT_INSTALL_DIR}/var/lock"
