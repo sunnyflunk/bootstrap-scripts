@@ -33,6 +33,9 @@ enableCcache
 
 mkdir build && pushd build
 
+export CFLAGS="-fPIC"
+export CXXFLAGS="-fPIC"
+
 cmake -G Ninja ../ \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm;openmp;polly' \
@@ -62,9 +65,10 @@ cmake -G Ninja ../ \
     -DLIBCXXABI_USE_LLVM_UNWINDER=ON \
     -DLIBCXXABI_USE_COMPILER_RT=ON \
     -DLIBCXXABI_ENABLE_SHARED=OFF \
-    -DLIBCXXABI_INSTALL_LIBRARY=OFF \
+    -DLIBCXXABI_INSTALL_LIBRARY=ON \
     -DLIBUNWIND_USE_COMPILER_RT=ON \
-    -DCLANG_DEFAULT_UNWINDLIB="libunwind"
+    -DCLANG_DEFAULT_UNWINDLIB="libunwind" \
+    -DLLVM_ENABLE_PIC=ON
 
 ninja -j "${SERPENT_BUILD_JOBS}" -v
 
