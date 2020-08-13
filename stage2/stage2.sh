@@ -23,6 +23,13 @@ COMPONENTS=(
     "coreutils"
     "openssl"
     "libarchive"
+    "autoconf"
+    "automake"
+    "m4"
+    "texinfo"
+    "make"
+    "gawk"
+    "intltool"
 )
 
 prefetchSources
