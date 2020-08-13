@@ -17,7 +17,7 @@ printInfo "Configuring python"
 CONFIG_SITE=config.site ./configure --prefix=/usr \
     --target="${SERPENT_TRIPLET}" \
     --host="${SERPENT_HOST}" \
-    --build="${SERPENT_ARCH}" \
+    --build="${SERPENT_TARGET_ARCH}" \
     --libdir=/usr/lib \
     --bindir=/usr/bin \
     --sbindir=/usr/sbin \
