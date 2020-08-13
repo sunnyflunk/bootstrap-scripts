@@ -32,6 +32,8 @@ COMPONENTS=(
     "intltool"
     "slibtool"
     "libxml2"
+    #"gettext"
+    "bison"
 )
 
 prefetchSources
