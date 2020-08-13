@@ -17,5 +17,5 @@ COMPONENTS=(
 prefetchSources
 
 for component in ${COMPONENTS[@]} ; do
-    /usr/bin/env -S -i bash --norc --noprofile "${executionPath}/${component}.sh" || serpentFail "Building ${component} failed"
+    /usr/bin/env -S -i SERPENT_TARGET="${SERPENT_TARGET}" bash --norc --noprofile "${executionPath}/${component}.sh" || serpentFail "Building ${component} failed"
 done

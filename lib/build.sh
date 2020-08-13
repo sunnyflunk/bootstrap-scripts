@@ -152,7 +152,7 @@ else
     printError "Unsupported host configuration"
     exit 1
 fi
-    
+
 export SERPENT_TARGET=${SERPENT_TARGET:-"ia"}
 
 [ -e "${SERPENT_ROOT_DIR}/targets/${SERPENT_TARGET}.sh" ] || serpentFail "Failed to load targets/${SERPENT_TARGET}.sh"
