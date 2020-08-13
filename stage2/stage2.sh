@@ -43,8 +43,8 @@ COMPONENTS=(
     "expat"
     "db"
     "perl"
-    "python"
-    "meson"
+    # "python"
+    # "meson"
     "gperf"
 )
 
