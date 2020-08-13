@@ -38,6 +38,7 @@ COMPONENTS=(
     "expat"
     "db"
     "perl"
+    "python"
 )
 
 prefetchSources
