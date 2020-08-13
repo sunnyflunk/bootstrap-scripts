@@ -21,4 +21,4 @@ printInfo "Installing musl"
 make -j "${SERPENT_BUILD_JOBS}" install DESTDIR="${SERPENT_INSTALL_DIR}"
 
 printInfo "Installing ldd"
-ln -sv ../lib/ld-musl-${SERPENT_ARCH}.so.1 "${SERPENT_INSTALL_DIR}/usr/bin/ldd"
+ln -sv ../lib/ld-musl-${SERPENT_TARGET_ARCH}.so.1 "${SERPENT_INSTALL_DIR}/usr/bin/ldd"

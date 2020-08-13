@@ -8,3 +8,5 @@ export SERPENT_TARGET_CFLAGS="-march=armv8-a -mtune=cortex-a72.cortex-a53 -O3 -f
 export SERPENT_TARGET_CXXFLAGS="${SERPENT_TARGET_CFLAGS}"
 export SERPENT_TARGET_LDFLAGS=""
 export SERPENT_TRIPLET="aarch64-serpent-linux-musl"
+export SERPENT_TARGET_LLVM_BACKEND="AArch64;ARM"
+export SERPENT_TARGET_ARCH="aarch64"

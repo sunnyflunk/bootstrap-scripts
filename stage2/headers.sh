@@ -7,7 +7,7 @@ extractSource linux
 cd linux-*
 
 printInfo "Configuring headers"
-export ARCH="${SERPENT_ARCH}"
+export ARCH="${SERPENT_TARGET_ARCH}"
 make mrproper
 make headers
 find usr/include -name '.*' -delete
