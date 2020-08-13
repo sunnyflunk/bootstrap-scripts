@@ -16,7 +16,7 @@ export CXXFLAGS="${SERPENT_TARGET_CXXFLAGS}"
 printInfo "Configuring musl"
 ./configure --prefix=/usr \
     --target="${SERPENT_TRIPLET}" \
-    --host="${SERPENT_HOST}" \
+    --build="${SERPENT_TRIPLET}" \
     --enable-optimize=auto \
     --enable-visibility \
     AR="llvm-ar" \
