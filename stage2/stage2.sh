@@ -34,6 +34,8 @@ COMPONENTS=(
     "libxml2"
     #"gettext"
     "bison"
+    "gdbm"
+    "expat"
 )
 
 prefetchSources
