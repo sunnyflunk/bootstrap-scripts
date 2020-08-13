@@ -36,6 +36,8 @@ COMPONENTS=(
     "bison"
     "gdbm"
     "expat"
+    "db"
+    "perl"
 )
 
 prefetchSources
