@@ -38,8 +38,8 @@ export AR="llvm-ar"
 export RANLIB="llvm-ranlib"
 export STRIP="llvm-strip"
 
-export CFLAGS="${SERPENT_TARGET_CFLAGS} -I${SERPENT_INSTALL_DIR}/usr/include -L${SERPENT_INSTALL_DIR}/usr/lib -Wno-unused-command-line-argument -Wno-error"
-export CXXFLAGS="${SERPENT_TARGET_CXXFLAGS} -I${SERPENT_INSTALL_DIR}/usr/include -L${SERPENT_INSTALL_DIR}/usr/lib -Wno-unused-command-line-argument -Wno-error"
+export CFLAGS="${SERPENT_TARGET_CFLAGS} -I${SERPENT_INSTALL_DIR}/usr/include -L${SERPENT_INSTALL_DIR}/usr/lib -Wno-unused-command-line-argument -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
+export CXXFLAGS="${SERPENT_TARGET_CXXFLAGS} -I${SERPENT_INSTALL_DIR}/usr/include -L${SERPENT_INSTALL_DIR}/usr/lib -Wno-unused-command-line-argument -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
 export LDFLAGS="${SERPENT_TARGET_LDFLAGS} -L${SERPENT_INSTALL_DIR}/usr/lib"
 export PKG_CONFIG_PATH="${SERPENT_INSTALL_DIR}/usr/lib/pkgconfig:${SERPENT_INSTALL_DIR}/usr/share/pkgconfig"
 
