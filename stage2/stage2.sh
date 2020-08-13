@@ -30,6 +30,8 @@ COMPONENTS=(
     "make"
     "gawk"
     "intltool"
+    "slibtool"
+    "libxml2"
 )
 
 prefetchSources
