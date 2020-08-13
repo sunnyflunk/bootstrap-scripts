@@ -39,6 +39,7 @@ cmake -G Ninja ../ \
     -DLLVM_ENABLE_PROJECTS='clang;compiler-rt;libcxx;libcxxabi;libunwind;lld;llvm;openmp;polly' \
     -DDEFAULT_SYSROOT="${SERPENT_INSTALL_DIR}" \
     -DCMAKE_BUILD_TYPE=Release \
+    -DLLVM_ENABLE_LIBXML2=OFF \
     -DLLVM_TARGET_ARCH="${SERPENT_TARGET_ARCH}" \
     -DLLVM_DEFAULT_TARGET_TRIPLE="${SERPENT_TRIPLET}" \
     -DLLVM_TARGETS_TO_BUILD="${SERPENT_TARGET_LLVM_BACKEND}" \
