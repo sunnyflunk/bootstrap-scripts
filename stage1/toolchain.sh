@@ -33,8 +33,8 @@ enableCcache
 
 mkdir build && pushd build
 
-export CFLAGS="-fPIC -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
-export CXXFLAGS="-fPIC -D_LIBCPP_HAS_MUSL_LIBC -Wno-error"
+export CFLAGS="-fPIC"
+export CXXFLAGS="-fPIC"
 
 cmake -G Ninja ../ \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -56,7 +56,6 @@ cmake -G Ninja ../ \
     -DLLVM_ENABLE_LIBCXX=ON \
     -DLLVM_STATIC_LINK_CXX_STDLIB=ON \
     -DSANITIZER_CXX_ABI=libc++ \
-    -DLIBCXX_HAS_MUSL_LIBC=ON \
     -DLIBCXX_INSTALL_SUPPORT_HEADERS=ON \
     -DLIBCXX_ENABLE_SHARED=ON \
     -DLIBCXX_ENABLE_STATIC=OFF \
