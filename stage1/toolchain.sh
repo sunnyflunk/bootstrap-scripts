@@ -29,8 +29,6 @@ ln -sv "polly-${TOOLCHAIN_VERSION}.src" polly
 
 pushd llvm
 
-enableCcache
-
 mkdir build && pushd build
 
 export CFLAGS="-fPIC"
