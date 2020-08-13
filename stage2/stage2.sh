@@ -29,6 +29,8 @@ COMPONENTS=(
     "texinfo"
     "make"
     "gawk"
+    "grep"
+    "sed"
     "intltool"
     "slibtool"
     "libxml2"
