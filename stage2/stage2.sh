@@ -44,6 +44,8 @@ COMPONENTS=(
     "db"
     "perl"
     "python"
+    "meson"
+    "gperf"
 )
 
 prefetchSources
