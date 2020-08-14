@@ -29,6 +29,7 @@ printInfo "Configuring util-linux"
     --enable-largefile \
     --disable-plymouth_support \
     --libdir=/usr/lib \
+    --disable-hardlink \
     --disable-rpath \
     --disable-makeinstall-chown \
     --disable-makeinstall-setuid \
