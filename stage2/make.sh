@@ -13,7 +13,8 @@ printInfo "Configuring make"
     --host="${SERPENT_HOST}" \
     --libdir=/usr/lib \
     --bindir=/usr/bin \
-    --sbindir=/usr/sbin
+    --sbindir=/usr/sbin \
+    --without-guile
 
 
 printInfo "Building make"
